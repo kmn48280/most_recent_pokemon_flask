@@ -2,6 +2,7 @@ from app import db, login
 from flask_login import UserMixin, current_user
 from datetime import datetime as dt
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import url_for
 
 
 class Pokemon(db.Model):
@@ -24,13 +25,14 @@ class Pokemon(db.Model):
         self.hp = poke_dict['stats_hp']
         self.defense = poke_dict['stats_defense']
         self.attack = poke_dict['stats_attack']
+        self.sprite = poke_dict['sprite_URL']
     
     def add_poke(self):
         db.session.add(self)
         db.session.commit()
    
     def delete_poke(self):
-        Pokemon.query.filter_by(id=Pokemon.id).delete()
+        db.session.delete(self)
         db.session.commit()
 
 class PokemonUser(db.Model):
@@ -43,7 +45,7 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(150))
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(200))
-    icon = db.Column(db.String(100))
+    icon = db.Column(db.Integer)
     created_on = db.Column(db.DateTime, default = dt.utcnow)
     pokemon_bank = db.relationship(
         'Pokemon', 
@@ -51,8 +53,8 @@ class User(UserMixin, db.Model):
         backref='users', 
         lazy='dynamic')
 
-    def current_poke():
-        return list(User.pokemon_bank)
+    def current_poke(self):
+        return self.pokemon_bank.all()
 
     def __repr__(self):
         return f"<User: {self.id} | {self.email}>"
@@ -85,7 +87,7 @@ class User(UserMixin, db.Model):
         db.session.commit()
     
     def get_icon(self):
-        return f'/static/images/svg/{self.icon}.svg'
+        return url_for('static', filename=f"/images/svg/{self.icon}.svg")
    
 
 @login.user_loader

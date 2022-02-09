@@ -29,14 +29,14 @@ class RegisterForm(FlaskForm):
     a7_img=Markup('<img src="/static/images/svg/squirtle.svg" style="height:75px">')
     a8_img=Markup('<img src="/static/images/svg/victini.svg" style="height:75px">')
 
-    a1 = a1_img
-    a2 = a2_img
-    a3 = a3_img
-    a4 = a4_img
-    a5 = a5_img
-    a6 = a6_img
-    a7 = a7_img
-    a8 = a8_img
+    a1 = 1
+    a2 = 2
+    a3 = 3
+    a4 = 4
+    a5 = 5
+    a6 = 6
+    a7 = 7
+    a8 = 8
  
     icon = RadioField('Please choose your avatar!', validators = [DataRequired()],
             choices = [(a1, a1_img),(a2, a2_img),(a3, a3_img),
@@ -67,14 +67,14 @@ class EditProfileForm(FlaskForm):
     a8_img=Markup('<img src="/static/images/svg/victini.svg" style="height:75px">')
 
     a0 = "Don't Change"
-    a1 = a1_img
-    a2 = a2_img
-    a3 = a3_img
-    a4 = a4_img
-    a5 = a5_img
-    a6 = a6_img
-    a7 = a7_img
-    a8 = a8_img
+    a1 = 1
+    a2 = 2
+    a3 = 3
+    a4 = 4
+    a5 = 5
+    a6 = 6
+    a7 = 7
+    a8 = 8
  
     icon = RadioField('Please choose your avatar!', validators = [DataRequired()],
             choices = [(a0,"Don't Change"),(a1, a1_img),(a2, a2_img),(a3, a3_img),

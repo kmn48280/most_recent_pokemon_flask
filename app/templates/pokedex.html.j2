@@ -71,29 +71,27 @@ Pokedex
                 <div id="collapseStatistics" class="accordion-collapse collapse" aria-labelledby="headingStatistics" data-bs-parent="#accordion">
                     <div class="accordion-body">
                         <ul>
-                        <li><strong>hp:{{poke.stats_hp}}</strong></li>
-                        <li><strong>defense:{{poke.stats_defense}}</strong></li>
-                        <li><strong>attack:{{poke.stats_attack}}</strong></li>
+                        <li><strong>hp:{{poke.hp}}</strong></li>
+                        <li><strong>defense:{{poke.defense}}</strong></li>
+                        <li><strong>attack:{{poke.attack}}</strong></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     <div class="card" style="width: 18rem;">
-            <img src="{{poke.sprite_URL}}" class="card-img-top" alt="sprite">
+            <img src="{{poke.sprite}}" class="card-img-top" alt="sprite">
         <div class="card-body">
             <h5 class="card-title">{{poke.name|title}}</h5>
-            <p class="card-text">{{poke.stats_hp, poke.stats_attack, poke.stats_defense}}</p>
+            <p class="card-text">{{poke.hp, poke.attack, poke.defense}}</p>
            <div class="tenor-gif-embed" data-postid="6038021" data-share-method="host" data-aspect-ratio="1.3369" data-width="100%">
                 <a href="https://tenor.com/view/pokeball-gif-6038021">Pokeball GIF</a>from 
                 <a href="https://tenor.com/search/pokeball-gifs">Pokeball GIFs</a>
            </div> 
            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
            <hr>
+                <a href="{{url_for('main.add_to_pokemon_bank', id=poke.id)}}" class="btn btn-success">Add to Pokemon Collection</a>
 
-            {% if current_user %}
-                <a href="{{url_for('main.pokedex')}}" class="btn btn-success">Add to Pokemon Collection</a>
-            {% endif %}
         </div>
     </div>
     {% endif%}
