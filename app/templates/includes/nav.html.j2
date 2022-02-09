@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+          <a class="navbar-brand" href="{{url_for('main.index')}}">Kristen's Pokemon Page</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" courier-controls="navbarSupportedContent" courier-expanded="false" courier-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                {% if current_user.is_authenticated %}
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('main.index')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.edit_profile')}}">Edit Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('main.pokedex')}}">Pokedex</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.logout')}}">Logout</a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.login')}}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('auth.register')}}">Become a Pokemon Trainer!</a>
+                </li>
+
+                {% endif %}
+            </ul>
+
+                {% if current_user.is_authenticated %}
+            <ul class="navbar-nav ms-auto align-items-center">
+              <a href="{{url_for('main.index')}}">
+                <img src="{{current_user.get_icon()}}" style="height:50px;">
+              </a>
+              <li class="nav-item">
+                <div class ="row">
+                  <div class="col-12">
+                    <a href="{{url_for('auth.edit_profile')}}" class="nav-link"><i class="bi bi-gear-fill"></i></a>
+                  </div>
+                  <div class="col-12">
+                    <a href="{{url_for('auth.logout')}}" class="nav-link"><i class="bi bi-box-arrow-right"></i></a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+                {% endif %}
+        </div>
+    </div>
+</nav>

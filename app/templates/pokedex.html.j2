@@ -1,0 +1,100 @@
+{% extends 'base.html.j2' %}
+
+{% block title %}
+Pokedex
+{% endblock %}
+
+{% block section %}
+<section class="hero-pokedex">
+    <div class="hero-content-pokedex">
+       <h1 class="hero-title-pokedex">
+            Pokedex
+       </h1>
+       <h2 class="hero-subtitle-pokedex">
+            Gotta Catch Them All!
+       </h2>
+    </div>
+</section>
+{% endblock %}
+
+
+{% block content %}
+    <h1 class="pokedex">Pokedex</h1>
+    <form action="{{url_for('main.pokedex')}}" id="pokedex-form" method="POST">
+        {{ form.hidden_tag() }}
+        <br>
+        {{ form.poke_name.label(class="form-label")}}
+        {{ form.poke_name(class="form-label")}}
+        {% for error in form.poke_name.errors %}
+            <small style="color:red;">{{ error }}</small>
+        {% endfor %}
+        <br>
+        <br>
+        {{ form.submit(class="btn btn-danger form-label")}}
+            <small style="color:red;">{{ error }}</small>
+    </form>
+    <br>
+    {% if poke %} 
+        <div class="accordion" id="accordion">
+            <div class="accordion-poke_name">
+                <h2 class="accordion-header" id="poke_name">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePoke_name" aria-expanded="true" aria-controls="collapsePoke_name">
+                        Pokemon Name
+                    </button>
+                </h2>
+                <div id="collapsePoke_name" class="accordion-collapse collapse" aria-labelledby="Poke_name" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <strong>{{poke.name|title}}</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-abilities">
+                <h2 class="accordion-header" id="abilities">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAbilities" aria-expanded="false" aria-controls="collapseAbilities">
+                        Abilities
+                    </button>
+                </h2>
+                 <div id="collapseAbilities" class="accordion-collapse collapse" aria-labelledby="headingAbilities" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <ul>
+                        <li><strong>{{poke.abilities}}</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-statistics">
+                <h2 class="accordion-header" id="headingStatistics">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStatistics" aria-expanded="false" aria-controls="collapseStatistics">
+                        Statistics
+                    </button>
+                </h2>
+                <div id="collapseStatistics" class="accordion-collapse collapse" aria-labelledby="headingStatistics" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <ul>
+                        <li><strong>hp:{{poke.stats_hp}}</strong></li>
+                        <li><strong>defense:{{poke.stats_defense}}</strong></li>
+                        <li><strong>attack:{{poke.stats_attack}}</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="card" style="width: 18rem;">
+            <img src="{{poke.sprite_URL}}" class="card-img-top" alt="sprite">
+        <div class="card-body">
+            <h5 class="card-title">{{poke.name|title}}</h5>
+            <p class="card-text">{{poke.stats_hp, poke.stats_attack, poke.stats_defense}}</p>
+           <div class="tenor-gif-embed" data-postid="6038021" data-share-method="host" data-aspect-ratio="1.3369" data-width="100%">
+                <a href="https://tenor.com/view/pokeball-gif-6038021">Pokeball GIF</a>from 
+                <a href="https://tenor.com/search/pokeball-gifs">Pokeball GIFs</a>
+           </div> 
+           <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+           <hr>
+
+            {% if current_user %}
+                <a href="{{url_for('main.pokedex')}}" class="btn btn-success">Add to Pokemon Collection</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif%}
+{% endblock %}

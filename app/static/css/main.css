@@ -1,0 +1,94 @@
+:root{
+    --dark:#006D77;
+    --teal:#83C5BE;
+    --off_white:#EDF6F9;
+    --peach:#FFDDD2;
+    --coral:#E29578;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    background-color: var(--dark);
+    color: var(--peach);
+ }
+ .hero {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://c4.wallpaperflare.com/wallpaper/440/152/860/pokemon-backgrounds-for-widescreen-wallpaper-preview.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    filter: brightness(60%);
+ }
+ .hero-content {
+    position: relative;
+    font-family: "Monserrat", sans-serif;
+    color: var(--peach);
+    text-align: center;
+    margin: 0.625rem;
+ }
+ .hero-title {
+    font-size: 8rem;
+    font-weight: 600;
+    margin-bottom: 0;
+ }
+ .hero-subtitle {
+    font-size: 2rem;
+    font-weight: 200;
+    margin-top: 1rem;
+ }
+ .hero-button {
+    background-color: red;
+    color: var(--off_white);
+    border: 1px solid #cb376a;
+    margin-top: 5rem;
+    padding: 0.9375rem1.875rem;
+    font-family: "Monserrat", sans-serif;
+    font-size: 1.125rem;
+    font-weight: 200;
+    cursor: pointer;
+ }
+ .hero-button:hover {
+    background-color: var(--dark) ;
+    border: 1px solid #db7598;
+ }
+
+.container{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container-fluid{
+    background-color: var(--teal);
+    margin: 0;
+    color: var(--peach);
+}
+
+.card{
+    border: 10px solid var(--teal);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--dark);
+    margin-top: 50px;
+}
+
+.login-form{
+    justify-content: center;
+    
+}
+
+
+

@@ -1,0 +1,65 @@
+{% extends 'base.html.j2' %}
+
+{% block title %}
+Homepage 
+{% endblock %}
+
+{% block section %}
+<section class="hero">
+    <div class="hero-content">
+       <h1 class="hero-title">
+            Pokemon
+       </h1>
+       <h2 class="hero-subtitle">
+            Welcome to my Poke Page!
+       </h2>
+       <button type="button" class="hero-button" onclick="location.href='{{url_for('main.pokedex')}}'">
+            Gotta catch them all!
+       </button>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<h2>These are my Pokemon:</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-primary">
+        <th scope="row">1</th>
+        <td>Squirtle</td>
+        <td>Water</td>
+      </tr>
+      <tr class="table-danger">
+        <th scope="row">2</th>
+        <td>Charmander</td>
+        <td>Fire</td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">2</th>
+        <td>Bulbasaur</td>
+        <td>Plant</td>
+      </tr>
+      <tr class="table-info">
+        <th scope="row">2</th>
+        <td>Dragonite</td>
+        <td>Draconic</td>
+      </tr>
+      <tr class="table-warning">
+        <th scope="row">2</th>
+        <td>Pikachu</td>
+        <td>Electric</td>
+      </tr>
+    </tbody>
+  </table>
+<footer>
+
+</footer>
+{% endblock %}
+
