@@ -19,6 +19,7 @@ Pokedex
 
 
 {% block content %}
+
     <h1 class="pokedex">Pokedex</h1>
     <form action="{{url_for('main.pokedex')}}" id="pokedex-form" method="POST">
         {{ form.hidden_tag() }}
@@ -79,20 +80,49 @@ Pokedex
                 </div>
             </div>
         </div>
-    <div class="card" style="width: 18rem;">
-            <img src="{{poke.sprite}}" class="card-img-top" alt="sprite">
-        <div class="card-body">
-            <h5 class="card-title">{{poke.name|title}}</h5>
-            <p class="card-text">{{poke.hp, poke.attack, poke.defense}}</p>
-           <div class="tenor-gif-embed" data-postid="6038021" data-share-method="host" data-aspect-ratio="1.3369" data-width="100%">
-                <a href="https://tenor.com/view/pokeball-gif-6038021">Pokeball GIF</a>from 
-                <a href="https://tenor.com/search/pokeball-gifs">Pokeball GIFs</a>
-           </div> 
-           <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-           <hr>
-                <a href="{{url_for('main.add_to_pokemon_bank', id=poke.id)}}" class="btn btn-success">Add to Pokemon Collection</a>
+        <br>
+        <br>
+<div class="pokedex-card start-0" style="width: 15rem;">
+  <img src="{{poke.sprite}}" class="card-img-top" alt="poke_sprite">
+  <div class="card-body">
+    <h3 class="card-title">{{poke.name|title}}</h3>
+    <p class="card-text">
+      <ul>
+         <li>HP: {{poke.hp}}</li>
+         <li>Attack: {{poke.attack}}</li> 
+         <li>Defense: {{poke.defense}}</li>
+      </ul>
+    </p>
+    <hr>
+    <a href="{{url_for('main.add_to_pokemon_bank', id=poke.id)}}" class="btn btn-success">Add to Pokemon Bank!</a>
+  </div>
+</div>
+   {% endif%}
 
+   {% for poke in current_user.pokemon_bank.all() %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{poke.sprite}}" class="card-img-top" alt="poke.sprite">
+                <div class="card-body">
+                    <h5 class="card-title">{{poke.name|title}}</h5>
+                        <p class="card-text">
+                            <ul>
+                                <li>{{poke.hp}}</li>
+                                <li>{{poke.attack}}</li> 
+                                <li>{{poke.defense}}</li>
+                            </ul>
+                        </p>
+                    <div class="tenor-gif-embed" data-postid="6038021" data-share-method="host" data-aspect-ratio="1.3369" data-width="100%">
+                        <a href="https://tenor.com/view/pokeball-gif-6038021">Pokeball GIF</a>from 
+                        <a href="https://tenor.com/search/pokeball-gifs">Pokeball GIFs</a>
+                    </div> 
+                <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                <div class="card-footer">
+                <a href="{{url_for('main.del_pokemon_from_bank', id=poke.id)}}" class="btn btn-danger">REMOVE</a>
+                </div>
+            </div>
         </div>
-    </div>
-    {% endif%}
+
+    {% endfor %}
+  
 {% endblock %}

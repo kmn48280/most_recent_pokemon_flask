@@ -1,0 +1,46 @@
+{% extends 'base.html.j2' %}
+
+
+
+{% block title %}
+BattleDome 
+{% endblock %}
+
+{% block ss%}
+{# body{
+    background-img: url({{url_for('static', filename='/images/pokestadium.png')}})
+} #}
+{% endblock %}
+
+{% for pokemon in pokemon_bank  %}
+
+<div class="card-group">
+  <div class="card">
+    <img src="{{pokemon.sprite_URL}}" class="card-img-top" alt="pokemon_sprite">
+    <div class="card-body">
+      <h5 class="card-title">{{poke.name}}</h5>
+      <p class="card-text">
+            <ul>
+                <li>ABILITY: {{poke.abilities}}</li>
+                <li>HP: {{poke.hp}}</li>
+                <li>ATTACK: {{poke.hp}}</li>
+                <li>DEFENSE: {{poke.hp}}</li>
+            </ul>
+      </p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">
+      <a href="{{url_for('main.del_pokemon_from_bank', id=poke.id)}}" class="btn btn-success">REMOVE</a>
+      </small>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+
+
+
+{% block content %}
+
+{% endblock %}

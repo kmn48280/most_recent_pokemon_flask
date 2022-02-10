@@ -67,4 +67,14 @@ body {
     font-family:'Courier New', Courier, monospace;
  }
 
+.card{
+   display: block;
+   align-items: space-between;
+   float: right;
+}
 
+.pokedex-card{
+   text-align: center;
+   background-color: var(--peach);
+   color: black;
+}

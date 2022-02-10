@@ -43,11 +43,10 @@ def pokedex():
                 new_poke_object.from_poke_dict(poke_dict)
                 new_poke_object.add_poke()
                 return render_template('pokedex.html.j2', poke = new_poke_object, form = form)
-            else:
-                flash('You already have this pokemon in your pokedex or you have too many pokemon.','danger')
-                #Error Return
-                return render_template('pokedex.html.j2', form = form)
-    flash('That is not a name of a pokemon', 'danger')
+        else:
+            flash('That is not a name of a pokemon', 'danger')
+            #Error Return
+            return render_template('pokedex.html.j2', form = form)
     return render_template('pokedex.html.j2', form=form)
 
 
@@ -58,10 +57,12 @@ def add_to_pokemon_bank(id):
     if pokemon in current_user.pokemon_bank:
         flash(f'You already have {pokemon.name} in your collection', 'danger')
         return redirect(url_for('main.pokedex'))
+    elif len(current_user.pokemon_bank.all()) == 5:
+        flash('Your Pokemon bank is full. Please remove Pokemon before adding.', 'danger')
+        return redirect(url_for('main.pokedex'))
     else:
-        flash('added', 'success')
+        flash('Pokemon added to your Pokemon bank', 'success')
         current_user.add_pokemon(pokemon)
-        current_user.current_poke()
     return redirect(url_for('main.pokedex'))
 
 @main.route('/del_pokemon_from_bank/<int:id>', methods = ['GET'])
@@ -69,7 +70,7 @@ def add_to_pokemon_bank(id):
 def del_pokemon_from_bank(id):
     pokemon = Pokemon.query.get(id)
     if pokemon in current_user.pokemon_bank:
-        current_user.delete_poke()
+        current_user.remove_pokemon(pokemon)
     flash(f'You have deleted {pokemon.name} from your collection', 'warning')
     return redirect(url_for('main.pokedex'))
 
