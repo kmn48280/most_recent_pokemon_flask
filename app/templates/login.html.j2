@@ -11,19 +11,30 @@ Login
 <form action="{{url_for('auth.login')}}", class="login-form", method='POST'>
 {{ form.hidden_tag() }}
 
-{{ form.email.label(class="form-label")}}
-{{ form.email(class="form-control")}}
-{% for error in form.email.errors %}
-    <small style="color:red;">{{ error }}</small>
-{% endfor %}
+<div clas="row mb-3">
+    {{ form.email.label(class="form-label")}}
+    <div class="col-sm-8">
+    {{ form.email(class="form-control")}}
+        {% for error in form.email.errors %}
+            <small style="color:red;">{{ error }}</small>
+        {% endfor %}
+    </div>
+</div>
 <br>
-{{ form.password.label(class="form-label")}}
-{{ form.password(class="form-control")}}
-{% for error in form.password.errors %}
-    <small style="color:red;">{{ error }}</small>
-{% endfor %}
+
+<div class="row mb-3">
+    {{ form.password.label(class="form-label")}}
+    <div class="col-sm-8">
+    {{ form.password(class="form-control")}}
+        {% for error in form.password.errors %}
+        <   small style="color:red;">{{ error }}</small>
+        {% endfor %}
+    </div>
+</div>
 <br>
-{{ form.submit(class="btn btn-danger form-control")}}
+
+
+{{ form.submit(class="btn btn-danger form-label")}}
     <small style="color:red;">{{ error }}</small>
 </form>
 

@@ -1,21 +1,35 @@
-{% extends 'base.html.j2' %}
-
+{% extends 'base.html.j2'%}
 {% block title %}
-Homepage 
+PokeTrainers
 {% endblock %}
-
-{% block ss%}
-
-{% endblock %}
-
-
-
-
-
-
 
 {% block content %}
-
-
-
+    <h1 id="show-users">Meet other PokeTrainers</h1>
+    <br>
+ 
+{% for user in users %}
+        <div id="user-card" class="card mb-3" style="max-width: 540px;">
+            <div class="row">
+                <div class="col-md-4">
+                <img src="{{user.get_icon()}}" class="img-fluid rounded-start" alt="avatar">
+                </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{user.first_name}}{{user.last_name}}</h5>
+                <p class="card-text">
+                    <h5>Statistics</h5>
+                    <ul>
+                        <li>Battles to date: {{user.battles}}</li>
+                        <li>Wins: {{user.wins}}</li>
+                        <li>Losses: {{user.losses}}</li>
+                    </ul>
+                </p>
+            <button type="button" class="card-button" onclick="location.href='{{url_for('social.battle', id=user.id)}}'">
+                Battle!
+            </button>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}

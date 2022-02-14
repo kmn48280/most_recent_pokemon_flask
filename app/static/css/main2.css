@@ -51,7 +51,17 @@ body {
     font-weight: 200;
     margin-top: 1rem;
  }
-
+ 
+ .container nav-container{
+    position: sticky !important;
+    padding: 0px 0px 0px 0px;
+    margin: 5px;
+ }
+ .navbar-dark .navbar-nav .nav-item a {
+   font-size: 20px;
+   color: #fff;
+   padding: 0 30px;
+ }
  .pokedex{
      text-align: center;
      font-family:'Courier New', Courier, monospace;
@@ -77,4 +87,14 @@ body {
    text-align: center;
    background-color: var(--peach);
    color: black;
+}
+
+#user_card{
+   display: flex;
+   flex-direction: column;
+}
+
+#show-users{
+   text-align: center;
+   margin-top: 50px;
 }

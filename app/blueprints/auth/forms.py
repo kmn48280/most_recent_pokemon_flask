@@ -16,18 +16,17 @@ class RegisterForm(FlaskForm):
     password = PasswordField("Password", validators= [DataRequired()])
     confirm_password = PasswordField("Confirm Password", validators= [DataRequired(), 
         EqualTo("password", message="Passwords MUST match")])
-    favorite = StringField("What's your favorite Pokemon?", default=None)
     submit = SubmitField("Register")
 
     #AVATARS:
-    a1_img=Markup('<img src="/static/images/svg/bulbasaur.svg" style="height:75px">')
-    a2_img=Markup('<img src="/static/images/svg/chikorita.svg" style="height:75px">')
-    a3_img=Markup('<img src="/static/images/svg/eevee.svg" style="height:75px">')
-    a4_img=Markup('<img src="/static/images/svg/jigglypuff.svg" style="height:75px">')
-    a5_img=Markup('<img src="/static/images/svg/pokemon.svg" style="height:75px">')
-    a6_img=Markup('<img src="/static/images/svg/poliwag.svg" style="height:75px">')
-    a7_img=Markup('<img src="/static/images/svg/squirtle.svg" style="height:75px">')
-    a8_img=Markup('<img src="/static/images/svg/victini.svg" style="height:75px">')
+    a1_img=Markup('<img src="/static/images/svg/1.svg" style="height:75px">')
+    a2_img=Markup('<img src="/static/images/svg/2.svg" style="height:75px">')
+    a3_img=Markup('<img src="/static/images/svg/3.svg" style="height:75px">')
+    a4_img=Markup('<img src="/static/images/svg/4.svg" style="height:75px">')
+    a5_img=Markup('<img src="/static/images/svg/5.svg" style="height:75px">')
+    a6_img=Markup('<img src="/static/images/svg/6.svg" style="height:75px">')
+    a7_img=Markup('<img src="/static/images/svg/7.svg" style="height:75px">')
+    a8_img=Markup('<img src="/static/images/svg/8.svg" style="height:75px">')
 
     a1 = 1
     a2 = 2
@@ -38,7 +37,7 @@ class RegisterForm(FlaskForm):
     a7 = 7
     a8 = 8
  
-    icon = RadioField('Please choose your avatar!', validators = [DataRequired()],
+    icon = RadioField('Please choose your avatar:', validators = [DataRequired()],
             choices = [(a1, a1_img),(a2, a2_img),(a3, a3_img),
             (a4, a4_img),(a5, a5_img),(a6, a6_img),(a7, a7_img),(a8, a8_img)])
     
@@ -54,17 +53,16 @@ class EditProfileForm(FlaskForm):
     password = PasswordField("Password", validators= [DataRequired()])
     confirm_password = PasswordField("Confirm Password", validators= [DataRequired(), 
         EqualTo("password", message="Passwords MUST match")])
-    favorite = StringField("What's your favorite Pokemon?", default=None)
     submit = SubmitField("Update")
     #AVATARS:
-    a1_img=Markup('<img src="/static/images/svg/bulbasaur.svg" style="height:75px">')
-    a2_img=Markup('<img src="/static/images/svg/chikorita.svg" style="height:75px">')
-    a3_img=Markup('<img src="/static/images/svg/eevee.svg" style="height:75px">')
-    a4_img=Markup('<img src="/static/images/svg/jigglypuff.svg" style="height:75px">')
-    a5_img=Markup('<img src="/static/images/svg/pokemon.svg" style="height:75px">')
-    a6_img=Markup('<img src="/static/images/svg/poliwag.svg" style="height:75px">')
-    a7_img=Markup('<img src="/static/images/svg/squirtle.svg" style="height:75px">')
-    a8_img=Markup('<img src="/static/images/svg/victini.svg" style="height:75px">')
+    a1_img=Markup('<img src="/static/images/svg/1.svg" style="height:75px">')
+    a2_img=Markup('<img src="/static/images/svg/2.svg" style="height:75px">')
+    a3_img=Markup('<img src="/static/images/svg/3.svg" style="height:75px">')
+    a4_img=Markup('<img src="/static/images/svg/4.svg" style="height:75px">')
+    a5_img=Markup('<img src="/static/images/svg/5.svg" style="height:75px">')
+    a6_img=Markup('<img src="/static/images/svg/6.svg" style="height:75px">')
+    a7_img=Markup('<img src="/static/images/svg/7.svg" style="height:75px">')
+    a8_img=Markup('<img src="/static/images/svg/8.svg" style="height:75px">')
 
     a0 = "Don't Change"
     a1 = 1

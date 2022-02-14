@@ -10,17 +10,17 @@
 
 {% block content %}
 
-<h1>
+<h1><strong>
     {% if current_user.is_authenticated %}
-    Edit Profile
+    Edit Your Profile
     {% else %}
-    Register
+    Pokemon Trainer Registration
     {% endif %}
-</h1>
+</h1></strong>
 
 
 <form action="{{url_for('auth.edit_profile') if current_user.is_authenticated else url_for('auth.register')}}" id="forms" method='POST'>
-     {{ form.hidden_tag() }}
+    {{ form.hidden_tag() }}
     
     {{form.icon.label}}
     <br>
@@ -33,30 +33,49 @@
     <br>
 
 
-   
-    {{form.first_name.label(class="form-label")}}
+<div class="row mb-3">
+    {{form.first_name.label(class="col-form-label")}}
+    <div class="col-sm-8">
     {{form.first_name(class="form-control", value=current_user.first_name)}}
+    </div>
+</div>
 
-    {{form.last_name.label(class="form-label")}} 
+
+<div class="row mb-3">
+    {{form.last_name.label(class="col-form-label")}} 
+    <div class="col-sm-8">
     {{form.last_name(class="form-control", value=current_user.last_name)}} 
+   </div>
+</div>
 
-    {{ form.email.label(class="form-label")}}
+
+<div class="row mb-3">
+    {{ form.email.label(class="col-form-label")}}
+    <div class="col-sm-8">
     {{ form.email(class="form-control", value=current_user.email)}}
     {% for error in form.email.errors %}
         <small style="color:red;">{{ error }}</small>
     {% endfor %}
+   </div>
+</div>
 
+<div class="row mb-3">
     {{ form.password.label(class="form-label")}}
+    <div class="col-sm-8">
     {{ form.password(class="form-control")}}
+   </div>
+</div>
 
+
+<div class="row mb-3">
     {{ form.confirm_password.label(class="form-label")}}
+    <div class="col-sm-8">
     {{ form.confirm_password(class="form-control")}}
     {% for error in form.confirm_password.errors %}
         <small style="color:red;">{{ error }}</small>
     {% endfor %}
-
-    {{ form.favorite.label(class="form-label")}}
-    {{ form.favorite(class="form-control", value=current_user.favorite)}}
+    </div>
+</div>
 
     {{ form.submit(class="btn btn-primary form-label")}}
         <small style="color:red;">{{ error }}</small>
